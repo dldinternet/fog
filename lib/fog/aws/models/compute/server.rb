@@ -12,6 +12,7 @@ module Fog
 
         attr_accessor :architecture
         attribute :ami_launch_index,         :aliases => 'amiLaunchIndex'
+        attribute :associate_ip,             :aliases => 'associatePublicIP'
         attribute :availability_zone,        :aliases => 'availabilityZone'
         attribute :block_device_mapping,     :aliases => 'blockDeviceMapping'
         attribute :network_interfaces,       :aliases => 'networkInterfaces'
@@ -154,6 +155,7 @@ module Fog
             'KernelId'                    => kernel_id,
             'KeyName'                     => key_name,
             'Monitoring.Enabled'          => monitoring,
+            'NetworkInterface.n.AssociatePublicIpAddress' => associate_ip,
             'Placement.AvailabilityZone'  => availability_zone,
             'Placement.GroupName'         => placement_group,
             'Placement.Tenancy'           => tenancy,
