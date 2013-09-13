@@ -12,7 +12,7 @@ module Fog
 
         attr_accessor :architecture
         attribute :ami_launch_index,         :aliases => 'amiLaunchIndex'
-        attribute :associatePublicIP
+        attribute :associate_public_ip,      :aliases => 'associatePublicIP'
         attribute :availability_zone,        :aliases => 'availabilityZone'
         attribute :block_device_mapping,     :aliases => 'blockDeviceMapping'
         attribute :network_interfaces,       :aliases => 'networkInterfaces'
@@ -173,16 +173,16 @@ module Fog
           # use of Security Group Ids when working in a VPC.
           if subnet_id
             options.delete('SecurityGroup')
-            if associatePublicIP
+            if associate_public_ip
               options['NetworkInterface.0.DeviceIndex'] = 0
-              options['NetworkInterface.0.AssociatePublicIpAddress'] = associatePublicIP
+              options['NetworkInterface.0.AssociatePublicIpAddress'] = associate_public_ip
               options['NetworkInterface.0.SubnetId'] = options['SubnetId']
               options.delete('SubnetId')
             end
           else
             options.delete('SubnetId')
           end
-          
+
           data = service.run_instances(image_id, 1, 1, options)
           merge_attributes(data.body['instancesSet'].first)
 
