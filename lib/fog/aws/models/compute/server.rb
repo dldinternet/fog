@@ -178,6 +178,16 @@ module Fog
               options['NetworkInterface.0.AssociatePublicIpAddress'] = associate_public_ip
               options['NetworkInterface.0.SubnetId'] = options['SubnetId']
               options.delete('SubnetId')
+              grp_num = 0
+              if options['SecurityGroupId'].kind_of?(Array)
+                options['SecurityGroupId'].each {|id|
+                  options["NetworkInterface.0.SecurityGroupId.#{grp_num}"] = id
+                  grp_num += 1
+                }
+              else
+                options["NetworkInterface.0.SecurityGroupId.0"] = options['SecurityGroupId']
+              end
+              options.delete('SecurityGroupId')
             end
           else
             options.delete('SubnetId')
