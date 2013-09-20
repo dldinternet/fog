@@ -7,7 +7,7 @@ Gem::Specification.new do |s|
   ## the sub! line in the Rakefile
   s.name              = 'fog'
   s.version           = '1.15.1'
-  s.date              = '2013-08-16'
+  s.date              = '2013-09-20'
   s.rubyforge_project = 'fog'
 
   ## Make sure your summary is short. The description may be as long
@@ -48,8 +48,10 @@ Gem::Specification.new do |s|
   s.add_dependency('mime-types')
   s.add_dependency('net-scp', '~>1.1')
   s.add_dependency('net-ssh', '>=2.1.3')
-  s.add_dependency('nokogiri', '~>1.5')
+  s.add_dependency('mini_portile', '~>0.5.1')
+  s.add_dependency('nokogiri', '~>1.5.1')
   s.add_dependency('ruby-hmac')
+  #s.add_dependency('ruby-graphviz')
 
   ## List your development dependencies here. Development dependencies are
   ## those that are only needed during development
